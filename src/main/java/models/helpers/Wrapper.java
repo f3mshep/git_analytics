@@ -1,11 +1,11 @@
-package repo;
+package models.helpers;
 
-import commit.Commit;
-import contributor.Contributor;
+import models.Commit;
+import models.Contributor;
 
 import java.util.Collection;
 
-interface Wrapper {
+public interface Wrapper {
 
     public Collection<Commit> buildCommits();
 

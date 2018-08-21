@@ -1,6 +1,7 @@
-package commit;
+package models.helpers;
 
-import contributor.Contributor;
+import models.Commit;
+import models.Contributor;
 
 import java.util.Date;
 

@@ -1,12 +1,12 @@
-package repo;
+package models.helpers;
 
-import commit.Commit;
-import contributor.Contributor;
+import models.Commit;
+import models.Contributor;
+import models.Repo;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class GithubWrapper implements Wrapper {
@@ -23,13 +23,19 @@ public class GithubWrapper implements Wrapper {
         repo = github.getRepository(url);
     }
 
+    public Repo buildRepo(){
+        String name = repo.getName();
+        String desc = repo.getDescription();
+        String url = repo.getHtmlUrl().toString();
+        return new Repo(name, desc, url);
+    }
+
     public Collection<Contributor> buildContributors(){
-        Collection<Contributor> contributors = new ArrayList<>();
-        repo
+        return null;
     }
 
     public Collection<Commit> buildCommits(){
-
+        return null;
     }
 
 }
