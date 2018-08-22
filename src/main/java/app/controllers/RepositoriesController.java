@@ -16,13 +16,17 @@ import java.io.IOException;
 @RequestMapping(path="/repos")
 public class RepositoriesController {
 
-   // private final ContributorRepository contributorRepository;
+    private final ContributorRepository contributorRepository;
     private final RepoRepository repoRepository;
-    // private final CommitRepository commitRepository;
+    private final CommitRepository commitRepository;
+
+
 
     @Autowired
-    public RepositoriesController(RepoRepository repoRepository) {
+    public RepositoriesController(ContributorRepository contributorRepository, RepoRepository repoRepository, CommitRepository commitRepository) {
+        this.contributorRepository = contributorRepository;
         this.repoRepository = repoRepository;
+        this.commitRepository = commitRepository;
     }
 
 

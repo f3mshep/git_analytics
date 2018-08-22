@@ -1,6 +1,6 @@
 app/models/repositories/CommitRepository.class
-app/models/helpers/Wrapper.class
 app/models/Repo.class
+app/models/helpers/Wrapper.class
 app/controllers/ContributorsController.class
 app/models/helpers/GithubWrapper.class
 app/models/repositories/ContributorRepository.class
