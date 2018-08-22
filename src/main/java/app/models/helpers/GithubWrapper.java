@@ -41,7 +41,7 @@ public class GithubWrapper implements Wrapper {
     }
 
     public List<Commit> updateCommits(Repo myRepo) throws IOException{
-        PagedIterable<GHCommit> gHCommits =  repo.queryCommits().until(myRepo.getLastUpdated()).list();
+        PagedIterable<GHCommit> gHCommits =  repo.queryCommits().since(myRepo.getLastUpdated()).list();
         List<Commit> commits = GHtoCommits(gHCommits, myRepo);
         return commits;
     }
