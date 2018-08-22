@@ -1,5 +1,7 @@
 package app.models;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -48,6 +50,7 @@ public class Commit {
         return url;
     }
 
+    @Length(max=1000000, message="status must be under 100,000 characters")
     public String getStatus() {
         return status;
     }

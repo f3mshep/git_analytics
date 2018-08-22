@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.exceptions.RepoNotFoundException;
+import app.models.Commit;
 import app.models.Repo;
 import app.models.helpers.GithubWrapper;
 import app.models.helpers.Wrapper;
@@ -11,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path="/repos")
@@ -35,18 +40,40 @@ public class RepositoriesController {
         return repoRepository.findAll();
     }
 
+    @GetMapping(path="/{id}/commits")
+    public @ResponseBody Iterable<Commit> getCommits(@PathVariable Long id) throws IOException{
+        validateRepo(id);
+        Repo myRepo  = repoRepository.findById(id).get();
+        //TODO: refactor error handling
+        GithubWrapper wrapper = new GithubWrapper(myRepo.getOwner() + "/" + myRepo.getTitle());
+        List<Commit> commits = wrapper.updateCommits(myRepo);
+        this.updateCommits(commits, myRepo);
+        return commitRepository.findByRepoId(myRepo.getId());
+    }
+
     @PostMapping
     public @ResponseBody Repo createRepo(@RequestParam String url) throws IOException {
         Wrapper wrapper = new GithubWrapper(url);
-        System.out.println(url);
+        //TODO: casting is a code smell. fix this
         Repo repo = ((GithubWrapper) wrapper).buildRepo();
+        //TODO: Consider moving this to updateCommits
         repoRepository.save(repo);
+        List<Commit> commits = wrapper.buildCommits(repo);
+        this.updateCommits(commits, repo);
         return repo;
     }
 
     @GetMapping(path="/{id}")
     public @ResponseBody Repo returnRepo(@PathVariable Long id){
         return this.repoRepository.findById(id).orElseThrow(() -> new RepoNotFoundException(id));
+    }
+
+    private void updateCommits(List<Commit> commits, Repo myRepo){
+        for (Commit commit : commits){
+            commitRepository.save(commit);
+        }
+        myRepo.setLastUpdated(new Date());
+        this.repoRepository.save(myRepo);
     }
 
     private void validateRepo(long id){

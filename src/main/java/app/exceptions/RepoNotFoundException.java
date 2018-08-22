@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class RepoNotFoundException extends RuntimeException {
 
     public RepoNotFoundException(long id){
-        super("could not find user '" + id + "'.");
+        super("could not find repo '" + id + "'.");
     }
 
 }
