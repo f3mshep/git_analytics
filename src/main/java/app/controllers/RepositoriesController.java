@@ -16,16 +16,15 @@ import java.io.IOException;
 @RequestMapping(path="/repos")
 public class RepositoriesController {
 
-    private final ContributorRepository contributorRepository;
+   // private final ContributorRepository contributorRepository;
     private final RepoRepository repoRepository;
-    private final CommitRepository commitRepository;
+    // private final CommitRepository commitRepository;
 
     @Autowired
-    public RepositoriesController(ContributorRepository contributorRepository, RepoRepository repoRepository, CommitRepository commitRepository) {
-        this.contributorRepository = contributorRepository;
+    public RepositoriesController(RepoRepository repoRepository) {
         this.repoRepository = repoRepository;
-        this.commitRepository = commitRepository;
     }
+
 
     @GetMapping
     public @ResponseBody String returnHi(){
@@ -37,11 +36,12 @@ public class RepositoriesController {
         Wrapper wrapper = new GithubWrapper(url);
         System.out.println(url);
         Repo repo = ((GithubWrapper) wrapper).buildRepo();
+        repoRepository.save(repo);
         return repo;
     }
 
     @GetMapping(path="/{id}")
-    public @ResponseBody Repo returnRepo(@PathVariable long id){
+    public @ResponseBody Repo returnRepo(@PathVariable Long id){
         return this.repoRepository.findById(id).orElseThrow(() -> new RepoNotFoundException(id));
     }
 

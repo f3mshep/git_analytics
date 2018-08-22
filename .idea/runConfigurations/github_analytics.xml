@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="github_analytics" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="app.Application" />
-    <module name="github_analytics" />
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
-</component>

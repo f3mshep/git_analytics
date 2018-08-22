@@ -1,12 +1,8 @@
 package app.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Collection;
+import javax.persistence.*;
 
-
+@Table(name="Repo")
 @Entity
 public class Repo {
 
@@ -14,9 +10,10 @@ public class Repo {
     //Collection<Commit> commits;
     private String name, desc, url;
 
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    @GeneratedValue
+    private Long id;
 
     private Repo(){}
 
@@ -26,7 +23,7 @@ public class Repo {
         this.url = url;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
