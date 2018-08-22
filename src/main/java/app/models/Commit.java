@@ -1,9 +1,6 @@
 package app.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -18,11 +15,14 @@ public class Commit {
     //private Contributor contributor;
     private String url, status;
 
-    public Commit(Date timestamp, Contributor contributor, String url, String status) {
+    @ManyToOne
+    Repo repo;
+
+    public Commit(Date timestamp, String url, String status, Repo repo) {
         this.timestamp = timestamp;
-        //this.contributor = contributor;
         this.url = url;
         this.status = status;
+        this.repo = repo;
     }
 
     private Commit(){}
@@ -38,6 +38,11 @@ public class Commit {
 //    public Contributor getContributor() {
 //        return contributor;
 //    }
+
+
+    public Repo getRepo() {
+        return repo;
+    }
 
     public String getUrl() {
         return url;

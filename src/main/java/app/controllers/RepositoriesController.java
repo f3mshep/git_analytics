@@ -31,8 +31,8 @@ public class RepositoriesController {
 
 
     @GetMapping
-    public @ResponseBody String returnHi(){
-        return "Hello";
+    public @ResponseBody Iterable<Repo> getAllRepos(){
+        return repoRepository.findAll();
     }
 
     @PostMapping

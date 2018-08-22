@@ -1,27 +1,22 @@
 package app.models.helpers;
 
 import app.models.Commit;
-import app.models.Contributor;
+import app.models.Repo;
 
 import java.util.Date;
 
 public class CommitBuilder {
     private Date timestamp;
-    private Contributor contributor;
     private String url;
     private String status;
+    private Repo repo;
 
     public CommitBuilder setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
         return this;
     }
 
-    public CommitBuilder setContributor(Contributor contributor) {
-        this.contributor = contributor;
-        return this;
-    }
-
-    public CommitBuilder setURL(String url) {
+    public CommitBuilder setUrl(String url) {
         this.url = url;
         return this;
     }
@@ -31,7 +26,12 @@ public class CommitBuilder {
         return this;
     }
 
+    public CommitBuilder setRepo(Repo repo) {
+        this.repo = repo;
+        return this;
+    }
+
     public Commit createCommit() {
-        return new Commit(timestamp, contributor, url, status);
+        return new Commit(timestamp, url, status, repo);
     }
 }

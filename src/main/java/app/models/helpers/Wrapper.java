@@ -2,13 +2,15 @@ package app.models.helpers;
 
 import app.models.Commit;
 import app.models.Contributor;
+import app.models.Repo;
+import app.models.repositories.CommitRepository;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface Wrapper {
 
-    public Collection<Commit> buildCommits();
+    public List<Commit> buildCommits();
 
-    public Collection<Contributor> buildContributors();
+    public List<Contributor> buildContributors(Repo myRepo, CommitRepository commitRepository);
 
 }
