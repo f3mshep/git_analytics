@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +27,7 @@ public class Repo {
     private Set<Commit> commits = new HashSet<>();
 
     @JsonIgnore
-    private long lastUpdated;
+    private Date lastUpdated;
     private Repo(){}
 
     public Repo(String title, String summary, String url, String owner, String platform) {
@@ -36,13 +36,14 @@ public class Repo {
         this.url = url;
         this.owner = owner;
         this.platform = platform;
+        this.setLastUpdated(Date.from(Instant.ofEpochSecond(0)));
     }
 
-    public long getLastUpdated() {
+    public Date getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setLastUpdated(long lastUpdated) {
+    public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 

@@ -73,7 +73,7 @@ public class RepositoriesController {
         for (Commit commit : commits){
             commitRepository.save(commit);
         }
-        myRepo.setLastUpdated(Instant.now().getEpochSecond());
+        myRepo.setLastUpdated(Date.from(Instant.now()));
         this.repoRepository.save(myRepo);
     }
 

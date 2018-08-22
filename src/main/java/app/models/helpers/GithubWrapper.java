@@ -49,13 +49,16 @@ public class GithubWrapper implements Wrapper {
     private List<Commit> GHtoCommits(PagedIterable<GHCommit> gHCommits, Repo myRepo) throws IOException{
         List<Commit> commits = new ArrayList<>();
         for (GHCommit ghCommit : gHCommits ){
-            Commit commit = new CommitBuilder()
+            if(ghCommit.getCommitDate().after(myRepo.getLastUpdated())){
+                Commit commit = new CommitBuilder()
                     .setRepo(myRepo)
                     .setStatus(ghCommit.getCommitShortInfo().getMessage())
                     .setTimestamp(ghCommit.getCommitDate())
                     .setUrl(ghCommit.getHtmlUrl().toString())
                     .createCommit();
-            commits.add(commit);
+                commits.add(commit);
+            }
+
         }
         return commits;
     }
