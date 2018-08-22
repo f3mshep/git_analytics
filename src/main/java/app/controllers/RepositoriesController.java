@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -72,7 +73,7 @@ public class RepositoriesController {
         for (Commit commit : commits){
             commitRepository.save(commit);
         }
-        myRepo.setLastUpdated(new Date());
+        myRepo.setLastUpdated(Instant.now().getEpochSecond());
         this.repoRepository.save(myRepo);
     }
 

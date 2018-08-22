@@ -3,12 +3,15 @@ package app.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Date;
+
+import java.sql.Date;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Repo {
+
 
     //Collection<Contributor> contributors;
     //Collection<Commit> commits;
@@ -24,7 +27,7 @@ public class Repo {
     private Set<Commit> commits = new HashSet<>();
 
     @JsonIgnore
-    private Date lastUpdated;
+    private long lastUpdated;
     private Repo(){}
 
     public Repo(String title, String summary, String url, String owner, String platform) {
@@ -35,11 +38,11 @@ public class Repo {
         this.platform = platform;
     }
 
-    public Date getLastUpdated() {
+    public long getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setLastUpdated(Date lastUpdated) {
+    public void setLastUpdated(long lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
