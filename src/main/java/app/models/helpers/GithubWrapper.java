@@ -27,7 +27,9 @@ public class GithubWrapper implements Wrapper {
         String name = repo.getName();
         String desc = repo.getDescription();
         String url = repo.getHtmlUrl().toString();
-        return new Repo(name, desc, url);
+        String owner = repo.getOwnerName();
+        String platform = "GitHub";
+        return new RepoBuilder().setTitle(name).setSummary(desc).setUrl(url).setOwner(owner).setPlatform(platform).createRepo();
     }
 
     public Collection<Contributor> buildContributors(){

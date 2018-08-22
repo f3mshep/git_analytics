@@ -10,7 +10,7 @@ public class Repo {
 
     //Collection<Contributor> contributors;
     //Collection<Commit> commits;
-    private String title, summary, url;
+    private String title, summary, url, owner, platform;
 
 
     @Id
@@ -19,10 +19,20 @@ public class Repo {
 
     private Repo(){}
 
-    public Repo(String title, String summary, String url) {
+    public Repo(String title, String summary, String url, String owner, String platform) {
         this.title = title;
         this.summary = summary;
         this.url = url;
+        this.owner = owner;
+        this.platform = platform;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getPlatform() {
+        return platform;
     }
 
     public Long getId() {

@@ -6,6 +6,7 @@ app/models/helpers/GithubWrapper.class
 app/models/repositories/ContributorRepository.class
 app/Application.class
 app/exceptions/RepoNotFoundException.class
+app/models/helpers/RepoBuilder.class
 app/models/repositories/RepoRepository.class
 app/controllers/RepositoriesController.class
 app/models/helpers/CommitBuilder.class
