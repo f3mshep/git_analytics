@@ -19,14 +19,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.kohsuke/github-api -->
-        <dependency>
-            <groupId>org.kohsuke</groupId>
-            <artifactId>github-api</artifactId>
-            <version>1.93</version>
-        </dependency>
-
-
         <!-- JPA Data (We are going to use Repositories, Entities, Hibernate, etc...) -->
 
         <dependency>
@@ -41,11 +33,48 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.kohsuke/github-api -->
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>1.93</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Java 6 = JAX-B Version 2.0   -->
+        <!-- Java 7 = JAX-B Version 2.2.3 -->
+        <!-- Java 8 = JAX-B Version 2.2.8 -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -62,3 +91,6 @@
     </build>
 
 </project>
+
+
+
