@@ -20,11 +20,15 @@ public class Commit {
     @ManyToOne
     Repo repo;
 
-    public Commit(Date timestamp, String url, String status, Repo repo) {
+    @ManyToOne
+    Contributor contributor;
+
+    public Commit(Date timestamp, String url, String status, Repo repo, Contributor contributor) {
         this.timestamp = timestamp;
         this.url = url;
         this.status = status;
         this.repo = repo;
+        this.contributor = contributor;
     }
 
     private Commit(){}

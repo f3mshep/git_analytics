@@ -26,8 +26,19 @@ public class Repo {
     @OneToMany(mappedBy="repo")
     private Set<Commit> commits = new HashSet<>();
 
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "commit",
+            joinColumns = {@JoinColumn(name = "repo_id")},
+            inverseJoinColumns = {@JoinColumn(name="contributor_id")}
+    )
+    private Set<Contributor> contributors;
+
     @JsonIgnore
     private Date lastUpdated;
+
+    //Don't touch, for Repository
     private Repo(){}
 
     public Repo(String title, String summary, String url, String owner, String platform) {

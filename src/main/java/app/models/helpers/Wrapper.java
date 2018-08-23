@@ -12,6 +12,4 @@ public interface Wrapper {
 
     public List<Commit> buildCommits(Repo myRepo) throws IOException;
 
-    public List<Contributor> buildContributors(Repo myRepo);
-
 }

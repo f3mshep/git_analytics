@@ -47,34 +47,22 @@ public class RepositoriesController {
         Repo myRepo  = repoRepository.findById(id).get();
         //TODO: refactor error handling
         GithubWrapper wrapper = new GithubWrapper(myRepo.getOwner() + "/" + myRepo.getTitle());
-        List<Commit> commits = wrapper.updateCommits(myRepo);
-        this.updateCommits(commits, myRepo);
+        wrapper.updateCommits(repoRepository, commitRepository, contributorRepository);
         return commitRepository.findByRepoId(myRepo.getId());
     }
 
     @PostMapping
     public @ResponseBody Repo createRepo(@RequestParam String url) throws IOException {
-        Wrapper wrapper = new GithubWrapper(url);
-        //TODO: casting is a code smell. fix this
-        Repo repo = ((GithubWrapper) wrapper).buildRepo();
-        //TODO: Consider moving this to updateCommits
-        repoRepository.save(repo);
-        List<Commit> commits = wrapper.buildCommits(repo);
-        this.updateCommits(commits, repo);
+        // one day this will be APIWrapper class which chooses appropriate wrapper
+        GithubWrapper wrapper = new GithubWrapper(url);
+        Repo repo = wrapper.buildRepo(repoRepository);
+        wrapper.updateCommits(repoRepository, commitRepository, contributorRepository);
         return repo;
     }
 
     @GetMapping(path="/{id}")
     public @ResponseBody Repo returnRepo(@PathVariable Long id){
         return this.repoRepository.findById(id).orElseThrow(() -> new RepoNotFoundException(id));
-    }
-
-    private void updateCommits(List<Commit> commits, Repo myRepo){
-        for (Commit commit : commits){
-            commitRepository.save(commit);
-        }
-        myRepo.setLastUpdated(Date.from(Instant.now()));
-        this.repoRepository.save(myRepo);
     }
 
     private void validateRepo(long id){

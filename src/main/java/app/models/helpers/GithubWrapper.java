@@ -4,70 +4,84 @@ import app.models.Commit;
 import app.models.Contributor;
 import app.models.Repo;
 import app.models.repositories.CommitRepository;
+import app.models.repositories.ContributorRepository;
 import app.models.repositories.RepoRepository;
 import org.kohsuke.github.*;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
-public class GithubWrapper implements Wrapper {
+public class GithubWrapper {
 
+    private final String PLATFORM = "GitHub";
     private GitHub github;
-    private GHRepository repo;
+    private GHRepository gHrepo;
     private String url;
+    private Repo repo;
 
     public GithubWrapper(String url) throws IOException {
         this.url = url;
         github = GitHub.connect();
         // think about throwing an error
-        // if repo not found
-        repo = github.getRepository(url);
+        // if gHrepo not found
+        gHrepo = github.getRepository(url);
+    }
+
+    public GithubWrapper(Repo repo) throws IOException{
+        this.repo = repo;
+        github = GitHub.connect();
+        // think about throwing an error
+        // if gHrepo not found
+        gHrepo = github.getRepository(repo.getOwner() +"/" + repo.getTitle());
     }
 
 
-    public Repo buildRepo(){
-        String name = repo.getName();
-        String desc = repo.getDescription();
-        String url = repo.getHtmlUrl().toString();
-        String owner = repo.getOwnerName();
-        String platform = "GitHub";
-        return new RepoBuilder().setTitle(name).setSummary(desc).setUrl(url).setOwner(owner).setPlatform(platform).createRepo();
+    public Repo buildRepo(RepoRepository repoRepository){
+        String name = gHrepo.getName();
+        String desc = gHrepo.getDescription();
+        String url = gHrepo.getHtmlUrl().toString();
+        String owner = gHrepo.getOwnerName();
+        String platform = PLATFORM;
+        this.repo =  new RepoBuilder().setTitle(name).setSummary(desc).setUrl(url).setOwner(owner).setPlatform(platform).createRepo();
+        repoRepository.save(repo);
+        return repo;
     }
 
-    public List<Contributor> buildContributors(Repo myRepo){
-        return null;
-    }
 
-    public List<Commit> updateCommits(Repo myRepo) throws IOException{
-        PagedIterable<GHCommit> gHCommits =  repo.queryCommits().since(myRepo.getLastUpdated()).list();
-        List<Commit> commits = GHtoCommits(gHCommits, myRepo);
-        return commits;
-    }
-
-    private List<Commit> GHtoCommits(PagedIterable<GHCommit> gHCommits, Repo myRepo) throws IOException{
-        List<Commit> commits = new ArrayList<>();
+    public void updateCommits(RepoRepository repoRepository, CommitRepository commitRepository, ContributorRepository contributorRepository) throws IOException{
+        PagedIterable<GHCommit> gHCommits =  gHrepo.queryCommits().since(repo.getLastUpdated()).list();
         for (GHCommit ghCommit : gHCommits ){
-            if(ghCommit.getCommitDate().after(myRepo.getLastUpdated())){
+            if(ghCommit.getCommitDate().after(repo.getLastUpdated())){
                 Commit commit = new CommitBuilder()
-                    .setRepo(myRepo)
+                    .setContributor(findOrCreateUser(ghCommit.getAuthor(), contributorRepository) )
+                    .setRepo(repo)
                     .setStatus(ghCommit.getCommitShortInfo().getMessage())
                     .setTimestamp(ghCommit.getCommitDate())
                     .setUrl(ghCommit.getHtmlUrl().toString())
                     .createCommit();
-                commits.add(commit);
+                commitRepository.save(commit);
             }
 
         }
-        return commits;
+        repo.setLastUpdated(Date.from(Instant.now()));
+        repoRepository.save(repo);
     }
 
-    @Override
-    public List<Commit> buildCommits(Repo myRepo) throws IOException{
-        PagedIterable<GHCommit> gHCommits =  this.repo.listCommits();
-        List<Commit> commits = GHtoCommits(gHCommits, myRepo);
-        return commits;
+    private Contributor findOrCreateUser(GHUser user, ContributorRepository contributorRepository){
+        String username = user.getLogin();
+        Optional<Contributor> optional = contributorRepository.findByUsername(username);
+        if (optional.isPresent()){
+            return optional.get();
+        } else {
+            Contributor contributor = new Contributor(username, PLATFORM);
+            contributorRepository.save(contributor);
+            return contributor;
+        }
     }
+
 
 }

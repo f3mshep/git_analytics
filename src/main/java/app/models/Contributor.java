@@ -1,13 +1,18 @@
 package app.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Collection;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Contributor {
+
+
+    @ManyToMany(mappedBy = "contributors")
+    private Set<Repo> repos = new HashSet<>();
+
+    @OneToMany
+    private Set<Commit> commits = new HashSet<>();
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -17,13 +22,14 @@ public class Contributor {
 
     // private Collection<Commit> commits;
 
-    private String name;
+    private String username, platform;
 
-    public Contributor(String name) {
-        this.name = name;
+    public Contributor(String username, String platform) {
+        this.username = username;
+        this.platform = platform;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 }

@@ -1,6 +1,7 @@
 package app.models.helpers;
 
 import app.models.Commit;
+import app.models.Contributor;
 import app.models.Repo;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ public class CommitBuilder {
     private String url;
     private String status;
     private Repo repo;
+    private Contributor contributor;
 
     public CommitBuilder setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
@@ -31,7 +33,12 @@ public class CommitBuilder {
         return this;
     }
 
+    public CommitBuilder setContributor(Contributor contributor) {
+        this.contributor = contributor;
+        return this;
+    }
+
     public Commit createCommit() {
-        return new Commit(timestamp, url, status, repo);
+        return new Commit(timestamp, url, status, repo, contributor);
     }
 }

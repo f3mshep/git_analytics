@@ -1,3 +1,4 @@
+/home/alexandra/IdeaProjects/git_analytics/src/main/java/app/models/helpers/ApiWrapper.java
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/models/Contributor.java
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/Application.java
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/exceptions/RepoNotFoundException.java
@@ -10,7 +11,6 @@
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/models/repositories/RepoRepository.java
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/models/repositories/CommitRepository.java
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/models/Commit.java
-/home/alexandra/IdeaProjects/git_analytics/src/main/java/app/models/helpers/CommitGetter.java
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/controllers/RepositoriesController.java
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/models/helpers/GithubWrapper.java
 /home/alexandra/IdeaProjects/git_analytics/src/main/java/app/models/helpers/CommitBuilder.java
