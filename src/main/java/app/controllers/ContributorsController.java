@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.exceptions.ContributorNotFoundException;
 import app.models.Contributor;
 import app.models.repositories.ContributorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,6 @@ public class ContributorsController {
 
     @GetMapping(path = "/{username}")
     public @ResponseBody Contributor getContributor(@PathVariable String username){
-        
+        return this.contributorRepository.findByUsername(username).orElseThrow(() -> new ContributorNotFoundException(username));
     }
 }
