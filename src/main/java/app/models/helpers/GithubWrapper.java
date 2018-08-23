@@ -53,6 +53,7 @@ public class GithubWrapper {
 
 
     public void updateCommits(RepoRepository repoRepository, CommitRepository commitRepository, ContributorRepository contributorRepository) throws IOException{
+
         PagedIterable<GHCommit> gHCommits =  gHrepo.queryCommits().since(repo.getLastUpdated()).list();
         for (GHCommit ghCommit : gHCommits ){
             if(ghCommit.getCommitDate().after(repo.getLastUpdated())){
