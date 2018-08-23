@@ -27,14 +27,6 @@ public class Repo {
     private Set<Commit> commits = new HashSet<>();
 
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(
-            name = "commit",
-            joinColumns = {@JoinColumn(name = "repo_id")},
-            inverseJoinColumns = {@JoinColumn(name="contributor_id")}
-    )
-    private Set<Contributor> contributors;
-
     @JsonIgnore
     private Date lastUpdated;
 

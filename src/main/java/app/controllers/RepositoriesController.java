@@ -46,7 +46,7 @@ public class RepositoriesController {
         validateRepo(id);
         Repo myRepo  = repoRepository.findById(id).get();
         //TODO: refactor error handling
-        GithubWrapper wrapper = new GithubWrapper(myRepo.getOwner() + "/" + myRepo.getTitle());
+        GithubWrapper wrapper = new GithubWrapper(myRepo);
         wrapper.updateCommits(repoRepository, commitRepository, contributorRepository);
         return commitRepository.findByRepoId(myRepo.getId());
     }

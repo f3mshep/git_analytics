@@ -3,6 +3,7 @@ package app.models;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -16,6 +17,7 @@ public class Commit {
 
     //private Contributor contributor;
     private String url, status;
+
 
     @ManyToOne
     Repo repo;

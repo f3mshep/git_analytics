@@ -7,11 +7,7 @@ import java.util.Set;
 @Entity
 public class Contributor {
 
-
-    @ManyToMany(mappedBy = "contributors")
-    private Set<Repo> repos = new HashSet<>();
-
-    @OneToMany
+    @OneToMany(mappedBy = "contributor")
     private Set<Commit> commits = new HashSet<>();
 
     @Id
