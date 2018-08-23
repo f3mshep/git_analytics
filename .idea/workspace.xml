@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff44c5e9-2bea-4428-8830-4140e1fc9286" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/exceptions/CommitNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/exceptions/ContributorNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/ContributorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/ContributorsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app/controllers/CommitsControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app/controllers/ContributorsControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app/controllers/RepositoriesControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/CommitsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/CommitsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/controllers/CommitsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/controllers/CommitsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/controllers/ContributorsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/controllers/ContributorsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/controllers/RepositoriesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/controllers/RepositoriesController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/models/helpers/ApiWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/models/helpers/GithubWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/models/helpers/GithubWrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/models/helpers/Wrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gs-mysql-data-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/gs-mysql-data-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gs-mysql-data-0.1.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/gs-mysql-data-0.1.0.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,26 +78,26 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="44" />
+          <entry key="java" value="51" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="44" />
+          <entry key="JAVA" value="51" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5617" />
+          <entry key="java" value="5779" />
           <entry key="properties" value="11" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5617" />
+          <entry key="JAVA" value="5779" />
           <entry key="Properties" value="11" />
           <entry key="XML" value="3" />
         </counts>
@@ -98,8 +109,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="58" column="97" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="97" />
+            <state relative-caret-position="190">
+              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,60 +118,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/exceptions/RepoNotFoundException.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/app/controllers/RepositoriesControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="3" selection-end-column="62" />
+            <state relative-caret-position="45">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/CommitsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#275#276#0" expanded="true" />
-                <element signature="e#333#334#0" expanded="true" />
+                <element signature="e#396#397#0" expanded="true" />
+                <element signature="e#452#453#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/models/Contributor.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/app/controllers/CommitsControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#385#386#0" expanded="true" />
-                <element signature="e#453#454#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/app/models/ContributorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/models/Commit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/app/models/CommitTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="152">
+              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -168,50 +153,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/ContributorsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+            <state relative-caret-position="127">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#826#827#0" expanded="true" />
-                <element signature="e#869#870#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/exceptions/CommitNotFoundException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#283#284#0" expanded="true" />
-                <element signature="e#305#306#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/exceptions/ContributorNotFoundException.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/app/controllers/ContributorsControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#322#323#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/models/helpers/GithubWrapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            <state relative-caret-position="228">
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -222,8 +177,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -233,10 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commit/Commit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/contributor/Contributor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/repo/Repo.java" />
         <option value="$PROJECT_DIR$/src/main/java/repo/Wrapable.java" />
         <option value="$PROJECT_DIR$/src/main/java/repo/Wrappable.java" />
         <option value="$PROJECT_DIR$/src/main/java/repo/Wrapper.java" />
@@ -284,6 +235,10 @@
         <option value="$PROJECT_DIR$/src/main/java/app/controllers/ContributorsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/exceptions/ContributorNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/exceptions/CommitNotFoundException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/controllers/CommitsController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/app/controllers/CommitsControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/app/controllers/ContributorsControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/app/controllers/RepositoriesControllerTest.java" />
       </list>
     </option>
   </component>
@@ -296,11 +251,11 @@
   <component name="MavenRunner">
     <option name="delegateBuildToMaven" value="true" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="27" />
-    <option name="width" value="1920" />
-    <option name="height" value="1053" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2162" />
+    <option name="y" value="146" />
+    <option name="width" value="1523" />
+    <option name="height" value="808" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -399,6 +354,24 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="git_analytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="git_analytics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="git_analytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="git_analytics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -416,7 +389,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535066650148" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535067830743" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -430,6 +403,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="app.controllers" />
       <recent name="app.models" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
@@ -514,12 +488,12 @@
       <workItem from="1534895779385" duration="10668000" />
       <workItem from="1534949927124" duration="26297000" />
       <workItem from="1535036169063" duration="5761000" />
-      <workItem from="1535052929727" duration="2688000" />
+      <workItem from="1535052929727" duration="3658000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57058000" />
+    <option name="totallyTimeSpent" value="58028000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -531,10 +505,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="27" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
+    <frame x="2162" y="146" width="1523" height="808" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19263607" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24441436" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -543,7 +516,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Learn" order="7" />
       <window_info id="Web" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run Dashboard" order="0" weight="0.53081083" />
+      <window_info anchor="bottom" id="Run Dashboard" order="0" sideWeight="0.49966148" visible="true" weight="0.72205883" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32972974" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.32948717" />
@@ -554,9 +527,9 @@
       <window_info anchor="bottom" id="TMC Test Results" order="8" weight="0.32948717" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.44324324" />
       <window_info anchor="bottom" id="Inspection Results" order="10" weight="0.32948717" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5003385" side_tool="true" visible="true" weight="0.72205883" />
       <window_info anchor="bottom" id="Spring" order="12" weight="0.32948717" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.48216215" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4994664" weight="0.48216215" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Java Enterprise" order="15" weight="0.32948717" />
       <window_info anchor="bottom" id="Version Control" order="16" weight="0.32972974" />
@@ -709,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/CommitsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/models/helpers/CommitGetter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/app/models/helpers/CommitBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -861,28 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="58" column="97" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/ContributorsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#869#870#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/models/Contributor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -891,6 +835,18 @@
             <element signature="imports" expanded="true" />
             <element signature="e#385#386#0" expanded="true" />
             <element signature="e#453#454#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/exceptions/CommitNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+            <element signature="e#305#306#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -907,15 +863,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/exceptions/CommitNotFoundException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/CommitsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="190">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#283#284#0" expanded="true" />
-            <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/app/controllers/ContributorsControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/ContributorsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/app/controllers/CommitsControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/app/controllers/RepositoriesControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
     </entry>

@@ -1,14 +1,14 @@
 app/models/repositories/CommitRepository.class
 app/models/Repo.class
-app/models/helpers/Wrapper.class
 app/controllers/ContributorsController.class
 app/models/helpers/GithubWrapper.class
 app/models/repositories/ContributorRepository.class
 app/Application.class
 app/exceptions/RepoNotFoundException.class
 app/models/helpers/RepoBuilder.class
-app/models/helpers/ApiWrapper.class
+app/exceptions/ContributorNotFoundException.class
 app/models/repositories/RepoRepository.class
+app/exceptions/CommitNotFoundException.class
 app/controllers/RepositoriesController.class
 app/models/helpers/CommitBuilder.class
 app/models/Contributor.class

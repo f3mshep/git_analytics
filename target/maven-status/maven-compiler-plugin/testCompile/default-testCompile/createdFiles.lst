@@ -1,0 +1,3 @@
+app/models/ContributorTest.class
+app/models/RepoTest.class
+app/models/CommitTest.class
