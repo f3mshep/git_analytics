@@ -36,6 +36,7 @@ class RepoTest {
 
     @Test
     void getLastUpdated() {
+        //initializes to epoch second
         //it returns the last updated timestamp
     }
 
@@ -46,7 +47,7 @@ class RepoTest {
 
     @Test
     void getOwner() {
-        //it sets 
+
     }
 
     @Test

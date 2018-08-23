@@ -4,7 +4,6 @@ import app.exceptions.RepoNotFoundException;
 import app.models.Commit;
 import app.models.Repo;
 import app.models.helpers.GithubWrapper;
-import app.models.helpers.Wrapper;
 import app.models.repositories.CommitRepository;
 import app.models.repositories.ContributorRepository;
 import app.models.repositories.RepoRepository;
@@ -12,11 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path="/repos")
