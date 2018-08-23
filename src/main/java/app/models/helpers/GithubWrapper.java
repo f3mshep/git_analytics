@@ -56,13 +56,15 @@ public class GithubWrapper {
         PagedIterable<GHCommit> gHCommits =  gHrepo.queryCommits().since(repo.getLastUpdated()).list();
         for (GHCommit ghCommit : gHCommits ){
             if(ghCommit.getCommitDate().after(repo.getLastUpdated())){
+                Contributor contributor = findOrCreateUser(ghCommit.getAuthor(), contributorRepository);
                 Commit commit = new CommitBuilder()
-                    .setContributor(findOrCreateUser(ghCommit.getAuthor(), contributorRepository) )
+                    .setContributor(contributor)
                     .setRepo(repo)
                     .setStatus(ghCommit.getCommitShortInfo().getMessage())
                     .setTimestamp(ghCommit.getCommitDate())
                     .setUrl(ghCommit.getHtmlUrl().toString())
                     .createCommit();
+                commit.addAssociation();
                 commitRepository.save(commit);
             }
 
@@ -72,7 +74,9 @@ public class GithubWrapper {
     }
 
     private Contributor findOrCreateUser(GHUser user, ContributorRepository contributorRepository){
-        String username = user.getLogin();
+        String username;
+        if (user == null) username = "anonymous";
+        else username =  user.getLogin();
         Optional<Contributor> optional = contributorRepository.findByUsername(username);
         if (optional.isPresent()){
             return optional.get();

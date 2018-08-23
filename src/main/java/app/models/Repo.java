@@ -42,6 +42,18 @@ public class Repo {
         this.setLastUpdated(Date.from(Instant.ofEpochSecond(0)));
     }
 
+    @ManyToMany
+    private Set<Contributor> contributors = new HashSet<>();
+
+    //this is the most tightly coupled code I hope to write
+    public void addContributor(Contributor contributor){
+        if (!this.contributors.contains(contributor)) contributors.add(contributor);
+    }
+
+    public Set<Contributor> getContributors() {
+        return contributors;
+    }
+
     public Date getLastUpdated() {
         return lastUpdated;
     }

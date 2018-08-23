@@ -10,6 +10,14 @@ public class Contributor {
     @OneToMany(mappedBy = "contributor")
     private Set<Commit> commits = new HashSet<>();
 
+    @ManyToMany
+    private Set<Repo> repos = new HashSet<>();
+
+    //this is the most tightly coupled code I hope to write
+    public void addRepo(Repo repo){
+        if (!this.repos.contains(repo)) this.repos.add(repo);
+    }
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;

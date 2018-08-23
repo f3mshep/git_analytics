@@ -1,5 +1,7 @@
 package app.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -33,6 +35,11 @@ public class Commit {
         this.contributor = contributor;
     }
 
+    public void addAssociation(){
+        repo.addContributor(contributor);
+        contributor.addRepo(repo);
+    }
+
     private Commit(){}
 
     public long getId() {
@@ -43,13 +50,13 @@ public class Commit {
         return timestamp;
     }
 
-//    public Contributor getContributor() {
-//        return contributor;
-//    }
-
-
+    @JsonIgnoreProperties(value="contributors")
     public Repo getRepo() {
         return repo;
+    }
+
+    public Contributor getContributor() {
+        return contributor;
     }
 
     public String getUrl() {
