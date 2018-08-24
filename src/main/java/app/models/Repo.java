@@ -1,6 +1,8 @@
 package app.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 
@@ -16,6 +18,8 @@ public class Repo {
     //Collection<Contributor> contributors;
     //Collection<Commit> commits;
     private String title, summary, url, platform;
+
+    @ManyToOne()
     private Contributor owner;
 
     @Id
@@ -23,7 +27,7 @@ public class Repo {
     private Long id;
 
     @JsonIgnore
-    @OneToMany(mappedBy="repo")
+    @OneToMany(mappedBy="repo", cascade = javax.persistence.CascadeType.ALL)
     private Set<Commit> commits = new HashSet<>();
 
 
@@ -49,6 +53,8 @@ public class Repo {
     public void addContributor(Contributor contributor){
         if (!this.contributors.contains(contributor)) contributors.add(contributor);
     }
+
+
 
     public Set<Contributor> getContributors() {
         return contributors;

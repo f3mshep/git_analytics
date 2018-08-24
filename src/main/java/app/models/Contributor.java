@@ -10,6 +10,9 @@ public class Contributor {
     @OneToMany(mappedBy = "contributor")
     private Set<Commit> commits = new HashSet<>();
 
+    @OneToMany(cascade = javax.persistence.CascadeType.ALL)
+    private Set<Repo> ownedRepos = new HashSet<>();
+
     @ManyToMany
     private Set<Repo> repos = new HashSet<>();
 
@@ -31,6 +34,14 @@ public class Contributor {
     public Contributor(String username, String platform) {
         this.username = username;
         this.platform = platform;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getPlatform() {
+        return platform;
     }
 
     public String getUsername() {

@@ -1,6 +1,2 @@
-app/models/ContributorTest.class
-app/models/CommitTest.class
 app/controllers/ContributorsControllerTest.class
 app/controllers/CommitsControllerTest.class
-app/controllers/RepositoriesControllerTest.class
-app/models/RepoTest.class

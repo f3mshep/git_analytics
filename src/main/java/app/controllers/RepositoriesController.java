@@ -40,17 +40,17 @@ public class RepositoriesController {
         validateRepo(id);
         Repo myRepo  = repoRepository.findById(id).get();
         //TODO: refactor error handling
-        GithubWrapper wrapper = new GithubWrapper(myRepo);
-        wrapper.updateCommits(repoRepository, commitRepository, contributorRepository);
+        GithubWrapper wrapper = new GithubWrapper(myRepo,repoRepository, commitRepository, contributorRepository);
+        wrapper.updateCommits();
         return commitRepository.findByRepoId(myRepo.getId());
     }
 
     @PostMapping
     public @ResponseBody Repo createRepo(@RequestParam String url) throws IOException {
         // one day this will be APIWrapper class which chooses appropriate wrapper
-        GithubWrapper wrapper = new GithubWrapper(url);
-        Repo repo = wrapper.buildRepo(repoRepository);
-        wrapper.updateCommits(repoRepository, commitRepository, contributorRepository);
+        GithubWrapper wrapper = new GithubWrapper(url, repoRepository, commitRepository, contributorRepository);
+        Repo repo = wrapper.buildRepo();
+        wrapper.updateCommits();
         return repo;
     }
 

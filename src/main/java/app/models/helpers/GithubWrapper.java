@@ -22,29 +22,39 @@ public class GithubWrapper {
     private GHRepository gHrepo;
     private String url;
     private Repo repo;
+    private ContributorRepository contributorRepository;
+    private RepoRepository repoRepository;
+    private CommitRepository commitRepository;
 
-    public GithubWrapper(String url) throws IOException {
+    public GithubWrapper(String url, RepoRepository repoRepository, CommitRepository commitRepository, ContributorRepository contributorRepository) throws IOException {
         this.url = url;
         github = GitHub.connect();
         // think about throwing an error
         // if gHrepo not found
+        this.repoRepository = repoRepository;
+        this.commitRepository = commitRepository;
+        this.contributorRepository = contributorRepository;
         gHrepo = github.getRepository(url);
     }
 
-    public GithubWrapper(Repo repo) throws IOException{
+    public GithubWrapper(Repo repo, RepoRepository repoRepository, CommitRepository commitRepository, ContributorRepository contributorRepository) throws IOException{
         this.repo = repo;
         github = GitHub.connect();
         // think about throwing an error
         // if gHrepo not found
+        this.repoRepository = repoRepository;
+        this.commitRepository = commitRepository;
+        this.contributorRepository = contributorRepository;
         gHrepo = github.getRepository(repo.getOwner() +"/" + repo.getTitle());
     }
 
 
-    public Repo buildRepo(RepoRepository repoRepository){
+    public Repo buildRepo(){
         String name = gHrepo.getName();
         String desc = gHrepo.getDescription();
         String url = gHrepo.getHtmlUrl().toString();
-        String owner = gHrepo.getOwnerName();
+        String ownerName = gHrepo.getOwnerName();
+        Contributor owner = findOrCreateUser(ownerName);
         String platform = PLATFORM;
         this.repo =  new RepoBuilder().setTitle(name).setSummary(desc).setUrl(url).setOwner(owner).setPlatform(platform).createRepo();
         repoRepository.save(repo);
@@ -52,12 +62,12 @@ public class GithubWrapper {
     }
 
 
-    public void updateCommits(RepoRepository repoRepository, CommitRepository commitRepository, ContributorRepository contributorRepository) throws IOException{
+    public void updateCommits() throws IOException{
 
         PagedIterable<GHCommit> gHCommits =  gHrepo.queryCommits().since(repo.getLastUpdated()).list();
         for (GHCommit ghCommit : gHCommits ){
             if(ghCommit.getCommitDate().after(repo.getLastUpdated())){
-                Contributor contributor = findOrCreateUser(ghCommit.getAuthor(), contributorRepository);
+                Contributor contributor = findOrCreateUser(ghCommit.getAuthor());
                 Commit commit = new CommitBuilder()
                     .setContributor(contributor)
                     .setRepo(repo)
@@ -73,10 +83,8 @@ public class GithubWrapper {
         repoRepository.save(repo);
     }
 
-    private Contributor findOrCreateUser(GHUser user, ContributorRepository contributorRepository){
-        String username;
-        if (user == null) username = "anonymous";
-        else username =  user.getLogin();
+    private Contributor findOrCreateUser(String username){
+        if (username == null) username = "anonymous";
         Optional<Contributor> optional = contributorRepository.findByUsername(username);
         if (optional.isPresent()){
             return optional.get();
@@ -85,6 +93,13 @@ public class GithubWrapper {
             contributorRepository.save(contributor);
             return contributor;
         }
+    }
+
+    private Contributor findOrCreateUser(GHUser user){
+        String username;
+        if (user == null) username = "anonymous";
+        else username =  user.getLogin();
+        return findOrCreateUser(username);
     }
 
 
