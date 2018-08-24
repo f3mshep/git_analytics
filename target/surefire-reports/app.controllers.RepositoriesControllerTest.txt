@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: app.controllers.RepositoriesControllerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.622 s <<< FAILURE! - in app.controllers.RepositoriesControllerTest
+initializationError(app.controllers.RepositoriesControllerTest)  Time elapsed: 0.007 s  <<< ERROR!
+java.lang.Exception: The class app.controllers.RepositoriesControllerTest is not public.
+
+initializationError(app.controllers.RepositoriesControllerTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Exception: Test class should have exactly one public constructor
+
+initializationError(app.controllers.RepositoriesControllerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: No runnable methods
+

@@ -15,8 +15,8 @@ public class Repo {
 
     //Collection<Contributor> contributors;
     //Collection<Commit> commits;
-    private String title, summary, url, owner, platform;
-
+    private String title, summary, url, platform;
+    private Contributor owner;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -33,7 +33,7 @@ public class Repo {
     //Don't touch, for Repository
     private Repo(){}
 
-    public Repo(String title, String summary, String url, String owner, String platform) {
+    public Repo(String title, String summary, String url, Contributor owner, String platform) {
         this.title = title;
         this.summary = summary;
         this.url = url;
@@ -62,7 +62,7 @@ public class Repo {
         this.lastUpdated = lastUpdated;
     }
 
-    public String getOwner() {
+    public Contributor getOwner() {
         return owner;
     }
 

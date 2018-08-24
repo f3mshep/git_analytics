@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: app.controllers.CommitsControllerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in app.controllers.CommitsControllerTest
+initializationError(app.controllers.CommitsControllerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: The class app.controllers.CommitsControllerTest is not public.
+
+initializationError(app.controllers.CommitsControllerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Test class should have exactly one public constructor
+
+initializationError(app.controllers.CommitsControllerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: No runnable methods
+

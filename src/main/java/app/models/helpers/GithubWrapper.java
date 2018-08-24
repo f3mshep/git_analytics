@@ -65,7 +65,6 @@ public class GithubWrapper {
                     .setTimestamp(ghCommit.getCommitDate())
                     .setUrl(ghCommit.getHtmlUrl().toString())
                     .createCommit();
-                commit.addAssociation();
                 commitRepository.save(commit);
             }
 

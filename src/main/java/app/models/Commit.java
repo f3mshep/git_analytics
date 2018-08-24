@@ -33,9 +33,10 @@ public class Commit {
         this.status = status;
         this.repo = repo;
         this.contributor = contributor;
+        addAssociation();
     }
 
-    public void addAssociation(){
+    private void addAssociation(){
         repo.addContributor(contributor);
         contributor.addRepo(repo);
     }

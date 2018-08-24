@@ -1,12 +1,13 @@
 package app.models.helpers;
 
+import app.models.Contributor;
 import app.models.Repo;
 
 public class RepoBuilder {
     private String title;
     private String summary;
     private String url;
-    private String owner;
+    private Contributor owner;
     private String platform;
 
     public RepoBuilder setTitle(String title) {
@@ -24,7 +25,7 @@ public class RepoBuilder {
         return this;
     }
 
-    public RepoBuilder setOwner(String owner) {
+    public RepoBuilder setOwner(Contributor owner) {
         this.owner = owner;
         return this;
     }
