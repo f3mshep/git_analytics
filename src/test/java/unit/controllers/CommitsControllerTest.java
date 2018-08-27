@@ -58,10 +58,6 @@ class CommitsControllerTest {
     private Repo repo;
     private Contributor contributor;
 
-
-    @Autowired
-    WebApplicationContext webApplicationContext;
-
     @Mock
     private CommitRepository commitRepository;
 

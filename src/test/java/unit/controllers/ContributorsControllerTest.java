@@ -1,11 +1,15 @@
 package unit.controllers;
 
 import app.Application;
+import app.controllers.ContributorsController;
 import app.models.Contributor;
 import app.models.repositories.ContributorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -15,20 +19,20 @@ import org.springframework.mock.http.MockHttpOutputMessage;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+
 
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
@@ -46,11 +50,11 @@ class ContributorsControllerTest {
     private Contributor contributor;
     private List<Contributor> contributorList = new ArrayList<>();
 
-    @Autowired
-    WebApplicationContext webApplicationContext;
-
-    @Autowired
+    @Mock
     private ContributorRepository contributorRepository;
+
+    @InjectMocks
+    private ContributorsController contributorsController;
 
     @Autowired
     void setConverters(HttpMessageConverter<?>[] converters) {
@@ -65,16 +69,22 @@ class ContributorsControllerTest {
 
     @BeforeEach
     public void setup() throws Exception{
-        this.contributorRepository.deleteAllInBatch();
-        this.mockMvc = webAppContextSetup(webApplicationContext).build();
+
+        MockitoAnnotations.initMocks(this);
+
+        mockMvc = MockMvcBuilders.standaloneSetup(contributorsController).build();
         this.contributor = new Contributor("f3mshep", "Github");
         this.contributorList.add(contributor);
         this.contributorRepository.save(contributor);
         this.contributorList.add(contributorRepository.save(new Contributor("meFace", "GitBucket")));
+        System.out.println("Setup complete");
     }
 
     @Test
     void getContributorReturnsContributor() throws Exception {
+
+        when(contributorRepository.findByUsername(contributor.getUsername())).thenReturn(Optional.of(contributor));
+
         mockMvc.perform(get("/contributors/" + contributor.getUsername()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
@@ -87,6 +97,7 @@ class ContributorsControllerTest {
     @Test
     void getContributorThrowsNotFound() throws Exception{
         String invalidName = "rawr";
+        when(contributorRepository.findByUsername(invalidName)).thenReturn(Optional.empty());
         mockMvc.perform(get("/contributors/" + invalidName))
                 .andExpect(status().isNotFound());
     }
@@ -95,6 +106,7 @@ class ContributorsControllerTest {
     void getAllContributorReturnsAllRepos() throws Exception{
         Contributor contributorA = contributorList.get(0);
         Contributor contributorB = contributorList.get(1);
+        when(contributorRepository.findAll()).thenReturn(this.contributorList);
         mockMvc.perform(get("/contributors"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
