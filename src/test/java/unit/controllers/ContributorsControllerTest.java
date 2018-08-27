@@ -76,7 +76,7 @@ class ContributorsControllerTest {
         this.contributor = new Contributor("f3mshep", "Github");
         this.contributorList.add(contributor);
         this.contributorRepository.save(contributor);
-        this.contributorList.add(contributorRepository.save(new Contributor("meFace", "GitBucket")));
+        this.contributorList.add((new Contributor("meFace", "GitBucket")));
         System.out.println("Setup complete");
     }
 

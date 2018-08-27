@@ -1,2 +1,7 @@
-app/controllers/ContributorsControllerTest.class
-app/controllers/CommitsControllerTest.class
+unit/controllers/RepositoriesControllerTest.class
+unit/app/models/helpers/GithubWrapperTest.class
+unit/app/models/CommitTest.class
+integration/app/controllers/CommitsControllerTest.class
+integration/app/controllers/ContributorsControllerTest.class
+unit/controllers/CommitsControllerTest.class
+integration/app/controllers/RepositoriesControllerTest.class

@@ -1,5 +1,6 @@
 package unit.app.models;
 
+import app.models.Contributor;
 import app.models.Repo;
 import app.models.helpers.RepoBuilder;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,10 +15,11 @@ class RepoTest {
 
     @BeforeEach
     void setUp() {
+        Contributor contributor = new Contributor("f3mshep", "Github");
         RepoBuilder rb = new RepoBuilder();
         this.repo = rb
                 .setPlatform("GitHub")
-                .setOwner("f3mshep")
+                .setOwner(contributor)
                 .setSummary("A mocked repo")
                 .setTitle("Mock_Me")
                 .setUrl("http://www.fakeurl.com")
