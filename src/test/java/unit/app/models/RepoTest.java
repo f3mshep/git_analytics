@@ -1,5 +1,6 @@
-package app.models;
+package unit.app.models;
 
+import app.models.Repo;
 import app.models.helpers.RepoBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
