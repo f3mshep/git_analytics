@@ -55,6 +55,20 @@ public class Repo {
     }
 
 
+    @Override
+    public String toString() {
+        return "Repo{" +
+                "title='" + title + '\'' +
+                ", summary='" + summary + '\'' +
+                ", url='" + url + '\'' +
+                ", platform='" + platform + '\'' +
+                ", owner=" + owner +
+                ", id=" + id +
+                ", commits=" + commits +
+                ", lastUpdated=" + lastUpdated +
+                ", contributors=" + contributors +
+                '}';
+    }
 
     public Set<Contributor> getContributors() {
         return contributors;

@@ -56,6 +56,7 @@ public class RepositoriesController {
 
     @GetMapping(path="/{id}")
     public @ResponseBody Repo returnRepo(@PathVariable Long id){
+        System.out.println(id);
         return this.repoRepository.findById(id).orElseThrow(() -> new RepoNotFoundException(id));
     }
 
