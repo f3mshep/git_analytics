@@ -32,6 +32,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import app.models.helpers.wrappers.*;
 import static org.hamcrest.Matchers.equalTo;
@@ -164,7 +165,48 @@ public class RepositoriesControllerUnitTest {
 
     @Test
     void shouldReturnAllCommitsForRepo() throws Exception {
-        fail("Not implemented yet");
+        long id = 1;
+        doNothing().when(apiWrapper).updateCommits(repo);
+        doReturn(commitList).when(commitRepository).findByRepoId(repo.getId());
+        doReturn(Optional.of(repo)).when(repoRepository).findById(id);
+        Commit commitA = commitList.get(0);
+        Commit commitB = commitList.get(1);
+        mockMvc.perform(get("/repos/"+ id +"/commits"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0]id", equalTo(Math.toIntExact(commitA.getId()))))
+                .andExpect(jsonPath("$[0]url", equalTo(commitA.getUrl())))
+                .andExpect(jsonPath("$[0]status", equalTo(commitA.getStatus())))
+                .andExpect(jsonPath("$[0]repo.title", equalTo(repo.getTitle())))
+                .andExpect(jsonPath("$[0]contributor.username", equalTo(contributor.getUsername())))
+                .andExpect(jsonPath("$[1]id", equalTo(Math.toIntExact(commitB.getId()))))
+                .andExpect(jsonPath("$[1]url", equalTo(commitB.getUrl())))
+                .andExpect(jsonPath("$[1]status", equalTo(commitB.getStatus())))
+                .andExpect(jsonPath("$[1]repo.title", equalTo(repo.getTitle())))
+                .andExpect(jsonPath("$[1]contributor.username", equalTo(contributor.getUsername())));
+
+    }
+
+    @Test
+    void shouldUpdateCommitsWhenExpired() throws Exception {
+        long id = 1;
+        repo.setLastUpdated(Date.from(Instant.now().minus(35, ChronoUnit.MINUTES)));
+        doReturn(Optional.of(repo)).when(repoRepository).findById(id);
+        doNothing().when(apiWrapper).updateCommits(repo);
+        mockMvc.perform(get("/repos/"+ id +"/commits"));
+        verify(apiWrapper).updateCommits(repo);
+    }
+
+    @Test
+    void shouldNotUpdateCommitsWhenValid() throws Exception {
+        long id = 1;
+        repo.setLastUpdated(Date.from(Instant.now()));
+        doNothing().when(apiWrapper).updateCommits(repo);
+        doReturn(Optional.of(repo)).when(repoRepository).findById(id);
+        mockMvc.perform(get("/repos/"+ id +"/commits"));
+        verifyZeroInteractions(apiWrapper);
+
     }
 
 

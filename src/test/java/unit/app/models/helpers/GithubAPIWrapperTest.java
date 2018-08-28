@@ -44,14 +44,19 @@ class GithubAPIWrapperTest {
 
     //build from repo obj
 
-    @Spy
-    List<String> myList = new ArrayList<>();
 
-    @BeforeEach
-    public void init(){
-        MockitoAnnotations.initMocks(this);
-    }
+    //it should create the ghrepo object upon instantion
 
+    //buildRepo
+        //it should throw an error if unable to find repo
+        //it should properly fill out fields of new repo object
+        //it should return a repo object
+        //it should save the repo object
 
+    //updateRepo
+        //it should throw an error if unable to locate repo
+        //it should properly add each commit to the repo
+        //it should only add the most recent commits to the repo
+        //it should properly update the time stamp
 
 }
