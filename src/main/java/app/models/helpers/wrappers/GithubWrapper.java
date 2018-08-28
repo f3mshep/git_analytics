@@ -13,6 +13,7 @@ import org.kohsuke.github.*;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 public class GithubWrapper implements APIWrapper {
@@ -46,7 +47,7 @@ public class GithubWrapper implements APIWrapper {
 
     public void updateCommits(Repo repo) throws IOException{
         GHRepository gHrepo = github.getRepository(repo.getOwner().getUsername() + "/" + repo.getTitle());
-        PagedIterable<GHCommit> gHCommits =  gHrepo.queryCommits().since(repo.getLastUpdated()).list();
+        Iterable<GHCommit> gHCommits =  gHrepo.queryCommits().since(repo.getLastUpdated()).list();
         for (GHCommit ghCommit : gHCommits ){
             if(ghCommit.getCommitDate().after(repo.getLastUpdated())){
                 Contributor contributor = findOrCreateUser(ghCommit.getAuthor());
