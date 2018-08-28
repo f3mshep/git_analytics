@@ -1,8 +1,10 @@
-package app.models.helpers;
+package app.models.helpers.wrappers;
 
 import app.models.Commit;
 import app.models.Contributor;
 import app.models.Repo;
+import app.models.helpers.CommitBuilder;
+import app.models.helpers.RepoBuilder;
 import app.models.repositories.CommitRepository;
 import app.models.repositories.ContributorRepository;
 import app.models.repositories.RepoRepository;

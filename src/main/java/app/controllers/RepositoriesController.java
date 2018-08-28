@@ -3,7 +3,7 @@ package app.controllers;
 import app.exceptions.RepoNotFoundException;
 import app.models.Commit;
 import app.models.Repo;
-import app.models.helpers.GithubWrapper;
+import app.models.helpers.wrappers.GithubWrapper;
 import app.models.repositories.CommitRepository;
 import app.models.repositories.ContributorRepository;
 import app.models.repositories.RepoRepository;
