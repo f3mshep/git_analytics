@@ -38,7 +38,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 @SpringBootTest(classes = Application.class)
 @ExtendWith(SpringExtension.class)
 
-class GithubWrapperTest {
+class GithubAPIWrapperTest {
 
     //build from string
 

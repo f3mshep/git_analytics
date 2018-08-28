@@ -12,60 +12,40 @@ import org.kohsuke.github.*;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
-public class GithubWrapper {
+public class GithubWrapper implements APIWrapper {
 
-    private final String PLATFORM = "GitHub";
     private GitHub github;
-    private GHRepository gHrepo;
-    private String url;
-    private Repo repo;
+    private final String PLATFORM = "GitHub";
     private ContributorRepository contributorRepository;
     private RepoRepository repoRepository;
     private CommitRepository commitRepository;
 
-    public GithubWrapper(String url, RepoRepository repoRepository, CommitRepository commitRepository, ContributorRepository contributorRepository) throws IOException {
-        this.url = url;
+    public GithubWrapper(RepoRepository repoRepository, CommitRepository commitRepository, ContributorRepository contributorRepository) throws IOException {
         github = GitHub.connect();
-        // think about throwing an error
-        // if gHrepo not found
         this.repoRepository = repoRepository;
         this.commitRepository = commitRepository;
         this.contributorRepository = contributorRepository;
-        gHrepo = github.getRepository(url);
     }
 
-    public GithubWrapper(Repo repo, RepoRepository repoRepository, CommitRepository commitRepository, ContributorRepository contributorRepository) throws IOException{
-        this.repo = repo;
-        github = GitHub.connect();
-        // think about throwing an error
-        // if gHrepo not found
-        this.repoRepository = repoRepository;
-        this.commitRepository = commitRepository;
-        this.contributorRepository = contributorRepository;
-        gHrepo = github.getRepository(repo.getOwner() +"/" + repo.getTitle());
-    }
-
-
-    public Repo buildRepo(){
+    public Repo buildRepo(String gitUrl) throws IOException{
+        GHRepository gHrepo = github.getRepository(gitUrl);
         String name = gHrepo.getName();
         String desc = gHrepo.getDescription();
         String url = gHrepo.getHtmlUrl().toString();
         String ownerName = gHrepo.getOwnerName();
         Contributor owner = findOrCreateUser(ownerName);
         String platform = PLATFORM;
-        this.repo =  new RepoBuilder().setTitle(name).setSummary(desc).setUrl(url).setOwner(owner).setPlatform(platform).createRepo();
+        Repo repo =  new RepoBuilder().setTitle(name).setSummary(desc).setUrl(url).setOwner(owner).setPlatform(platform).createRepo();
         repoRepository.save(repo);
         return repo;
     }
 
 
-    public void updateCommits() throws IOException{
-
+    public void updateCommits(Repo repo) throws IOException{
+        GHRepository gHrepo = github.getRepository(repo.getOwner().getUsername() + "/" + repo.getTitle());
         PagedIterable<GHCommit> gHCommits =  gHrepo.queryCommits().since(repo.getLastUpdated()).list();
         for (GHCommit ghCommit : gHCommits ){
             if(ghCommit.getCommitDate().after(repo.getLastUpdated())){
