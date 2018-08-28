@@ -35,6 +35,7 @@ import java.util.*;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -104,13 +105,13 @@ public class RepositoriesControllerUnitTest {
     }
 
     @Test
-    void returnRepo() throws Exception {
-        long fakeID = 1;
+    void shouldReturnRepoWithValidId() throws Exception {
+        long id = 1;
         // when(repoRepository.findById(fakeID)).thenReturn(Optional.of(repo));
         System.out.println("Looking for mock call:");
-        doReturn(Optional.of(repo)).when(repoRepository).findById(fakeID);
+        doReturn(Optional.of(repo)).when(repoRepository).findById(id);
 
-        mockMvc.perform(get("/repos/" + fakeID))
+        mockMvc.perform(get("/repos/" + id))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.title", equalTo(repo.getTitle())))
@@ -121,7 +122,26 @@ public class RepositoriesControllerUnitTest {
     }
 
     @Test
-    void getAllRepos() throws Exception {
+    void shouldReturnNotFoundWithInvalidId() throws Exception {
+        long invalidId = 999;
+        doReturn(Optional.empty()).when(repoRepository).findById(invalidId);
+
+        mockMvc.perform(get("/repos" + invalidId))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void shouldCreateNewRepoObject() throws Exception {
+        fail("Not implemented yet");
+    }
+
+    @Test
+    void shouldReturnAllCommitsForRepo() throws Exception {
+        fail("Not implemented yet");
+    }
+
+    @Test
+    void shouldGetAllRepos() throws Exception {
         //when(repoRepository.findAll()).thenReturn(repoList);
         doReturn(repoList).when(repoRepository).findAll();
         Repo repoA = repoList.get(0);
