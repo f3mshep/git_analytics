@@ -23,7 +23,7 @@ public class RepositoriesController {
     private final ContributorRepository contributorRepository;
     private final RepoRepository repoRepository;
     private final CommitRepository commitRepository;
-    protected final APIWrapper apiWrapper;
+    protected APIWrapper apiWrapper;
 
     @Autowired
     public RepositoriesController(ContributorRepository contributorRepository, RepoRepository repoRepository, CommitRepository commitRepository) throws Exception {
@@ -44,16 +44,15 @@ public class RepositoriesController {
         validateRepo(id);
         Repo myRepo  = repoRepository.findById(id).get();
         //TODO: refactor error handling
-         if(shouldRepoUpdate(myRepo)) apiWrapper.updateCommits(myRepo);
+        if(shouldRepoUpdate(myRepo)) apiWrapper.updateCommits(myRepo);
         return commitRepository.findByRepoId(myRepo.getId());
     }
 
     @PostMapping
     public @ResponseBody Repo createRepo(@RequestParam String url) throws IOException {
         // one day this will be APIWrapper class which chooses appropriate wrapper
-        GithubWrapper wrapper = new GithubWrapper(repoRepository, commitRepository, contributorRepository);
-        Repo repo = wrapper.buildRepo(url);
-        wrapper.updateCommits(repo);
+        Repo repo = apiWrapper.buildRepo(url);
+        apiWrapper.updateCommits(repo);
         return repo;
     }
 
@@ -72,5 +71,9 @@ public class RepositoriesController {
         Instant now = Instant.now();
         Instant lastUpdated = repo.getLastUpdated().toInstant();
         return lastUpdated.isBefore(now.minus(REFRESH_LIMIT_MINUTES, ChronoUnit.MINUTES));
+    }
+
+    public void setWrapper(APIWrapper wrapper){
+        this.apiWrapper = wrapper;
     }
 }

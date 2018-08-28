@@ -14,6 +14,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.kohsuke.github.GitHub;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -30,15 +31,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.time.Instant;
 import java.util.*;
-
+import app.models.helpers.wrappers.*;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest(classes = Application.class)
@@ -69,14 +71,20 @@ public class RepositoriesControllerUnitTest {
     @Mock
     RepoRepository repoRepository;
 
+    @Mock
+    APIWrapper apiWrapper = createMockWrapper(contributorRepository, repoRepository, commitRepository);
+
     @InjectMocks
     RepositoriesController repositoriesController;
+
+    public RepositoriesControllerUnitTest() throws Exception {
+    }
 
     @BeforeEach
     public void setup() throws Exception{
 
         this.mockMvc = MockMvcBuilders.standaloneSetup(repositoriesController).build();
-
+        repositoriesController.setWrapper(apiWrapper);
         Date timeStamp = new Date();
         this.contributor = new Contributor("f3mshep", "Github");
         this.repo = new RepoBuilder()
@@ -101,6 +109,15 @@ public class RepositoriesControllerUnitTest {
                 .setRepo(repo)
                 .setContributor(contributor)
                 .createCommit();
+        commitList.add(commit);
+        commitList.add(new CommitBuilder()
+                .setUrl("http://github.com/totally_real/really")
+                .setTimestamp(new Date())
+                .setStatus("super commit pt 2")
+                .setRepo(repo)
+                .setContributor(contributor)
+                .createCommit()
+                );
 
     }
 
@@ -132,13 +149,24 @@ public class RepositoriesControllerUnitTest {
 
     @Test
     void shouldCreateNewRepoObject() throws Exception {
-        fail("Not implemented yet");
+        doReturn(printMe(repo)).when(apiWrapper).buildRepo("totally_real/really");
+        doNothing().when(apiWrapper).updateCommits(repo);
+        mockMvc.perform(post("/repos?url=totally_real/really"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.title", equalTo(repo.getTitle())))
+                .andExpect(jsonPath("$.summary",  equalTo(repo.getSummary())))
+                .andExpect(jsonPath("$.url",  equalTo(repo.getUrl())))
+                .andExpect(jsonPath("$.platform",  equalTo(repo.getPlatform())));
+        verify(apiWrapper).buildRepo("totally_real/really");
+        verify(apiWrapper).updateCommits(repo);
     }
 
     @Test
     void shouldReturnAllCommitsForRepo() throws Exception {
         fail("Not implemented yet");
     }
+
 
     @Test
     void shouldGetAllRepos() throws Exception {
@@ -159,6 +187,15 @@ public class RepositoriesControllerUnitTest {
                 .andExpect(jsonPath("$[1]summary",  equalTo(repoB.getSummary())))
                 .andExpect(jsonPath("$[1]url",  equalTo(repoB.getUrl())))
                 .andExpect(jsonPath("$[1]platform",  equalTo(repoB.getPlatform())));
+    }
+
+    private APIWrapper createMockWrapper(ContributorRepository contributorRepository, RepoRepository repoRepository, CommitRepository commitRepository) throws Exception{
+        return new GithubWrapper(repoRepository, commitRepository, contributorRepository);
+    }
+
+    private Repo printMe(Repo repo){
+        System.out.println("Called test wrapper");
+        return repo;
     }
 
 }
