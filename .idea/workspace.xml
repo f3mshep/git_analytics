@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73305f21-f1f5-4a65-8382-52ee6bc97e47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/helpers/wrappers/GithubWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/helpers/wrappers/GithubWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/unit/app/models/helpers/GithubAPIWrapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/unit/app/models/helpers/GithubAPIWrapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/integration/app/controllers/RepositoriesControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/integration/app/controllers/RepositoriesControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/unit/app/models/helpers/GithubAPIWrapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/unit/app/models/helpers/GithubAPIWrapperTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,12 +21,12 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf>
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/main/java/app/models/helpers/wrappers/GithubWrapper.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="401">
-                    <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+                  <state relative-caret-position="431">
+                    <caret line="67" selection-start-line="67" selection-end-line="67" />
                   </state>
                 </provider>
               </entry>
@@ -35,32 +40,36 @@
     <session id="1595787168">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.53" value="1" />
+          <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.66" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="28" />
+          <entry key="class" value="1" />
+          <entry key="java" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="28" />
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="11" />
-          <entry key="java" value="4918" />
+          <entry key="java" value="5474" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4918" />
+          <entry key="JAVA" value="5474" />
           <entry key="PLAIN_TEXT" value="11" />
         </counts>
       </usages-collector>
@@ -69,22 +78,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/unit/controllers/RepositoriesControllerUnitTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/unit/app/models/helpers/GithubAPIWrapperTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="157" column="42" selection-start-line="157" selection-start-column="42" selection-end-line="157" selection-end-column="42" />
+            <state relative-caret-position="1211">
+              <caret line="150" selection-start-line="150" selection-end-line="150" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,13 +90,70 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/unit/controllers/ContributorsControllerUnitTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+            <state relative-caret-position="-72">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/ContributorsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/CommitsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1577">
+              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="28" column="51" lean-forward="true" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.0.3.RELEASE/spring-boot-autoconfigure-2.0.3.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/http/HttpMessageConvertersAutoConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1102">
+              <caret line="88" column="42" selection-start-line="88" selection-start-column="42" selection-end-line="88" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -116,7 +170,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/models/Repo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-763">
+            <state relative-caret-position="190">
               <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
             </state>
           </provider>
@@ -150,7 +204,11 @@
         <option value="$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/controllers/RepositoriesControllerUnitTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/models/helpers/wrappers/GithubWrapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/unit/ObservableAnswer.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/app/models/helpers/GithubAPIWrapperTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java" />
       </list>
     </option>
   </component>
@@ -166,10 +224,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2215" />
-    <option name="y" value="130" />
-    <option name="width" value="1493" />
-    <option name="height" value="802" />
+    <option name="x" value="282" />
+    <option name="width" value="1483" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -177,9 +234,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -265,6 +319,16 @@
               <item name="gs-mysql-data" type="b2602c69:ProjectViewProjectNode" />
               <item name="git_analytics" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="repositories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gs-mysql-data" type="b2602c69:ProjectViewProjectNode" />
+              <item name="git_analytics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -289,29 +353,14 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="unit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gs-mysql-data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="git_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="unit" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gs-mysql-data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="git_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="unit" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -321,7 +370,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535499471850" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535585079725" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -337,7 +386,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GithubAPIWrapperTest.shouldUpdateRepoWithCommits">
+  <component name="RunManager" selected="JUnit.RepositoriesControllerTest">
     <configuration name="GithubAPIWrapperTest.shouldBuildValidRepo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gs-mysql-data" />
       <extension name="coverage">
@@ -366,6 +415,20 @@
       <option name="MAIN_CLASS_NAME" value="unit.app.models.helpers.GithubAPIWrapperTest" />
       <option name="METHOD_NAME" value="shouldUpdateRepoWithCommits" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RepositoriesControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gs-mysql-data" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="integration.app.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="integration.app.controllers" />
+      <option name="MAIN_CLASS_NAME" value="integration.app.controllers.RepositoriesControllerTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -400,22 +463,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RepositoriesControllerUnitTest.shouldReturnAllCommitsForRepo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gs-mysql-data" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="unit.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="unit.controllers" />
-      <option name="MAIN_CLASS_NAME" value="unit.controllers.RepositoriesControllerUnitTest" />
-      <option name="METHOD_NAME" value="shouldReturnAllCommitsForRepo" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="gs-mysql-data" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
@@ -426,18 +473,18 @@
     <list>
       <item itemvalue="Spring Boot.Application" />
       <item itemvalue="JUnit.RepositoriesControllerUnitTest" />
-      <item itemvalue="JUnit.RepositoriesControllerUnitTest.shouldReturnAllCommitsForRepo" />
       <item itemvalue="JUnit.RepositoriesControllerUnitTest.shouldNotUpdateCommitsWhenValid" />
       <item itemvalue="JUnit.GithubAPIWrapperTest.shouldBuildValidRepo" />
       <item itemvalue="JUnit.GithubAPIWrapperTest.shouldUpdateRepoWithCommits" />
+      <item itemvalue="JUnit.RepositoriesControllerTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RepositoriesControllerTest" />
         <item itemvalue="JUnit.GithubAPIWrapperTest.shouldUpdateRepoWithCommits" />
         <item itemvalue="JUnit.GithubAPIWrapperTest.shouldBuildValidRepo" />
         <item itemvalue="JUnit.RepositoriesControllerUnitTest" />
         <item itemvalue="JUnit.RepositoriesControllerUnitTest.shouldNotUpdateCommitsWhenValid" />
-        <item itemvalue="JUnit.RepositoriesControllerUnitTest.shouldReturnAllCommitsForRepo" />
       </list>
     </recent_temporary>
   </component>
@@ -453,32 +500,13 @@
       <updated>1535418224181</updated>
       <workItem from="1535418228088" duration="6082000" />
       <workItem from="1535471844110" duration="5808000" />
-      <workItem from="1535485907756" duration="13237000" />
+      <workItem from="1535485907756" duration="13388000" />
+      <workItem from="1535553745495" duration="2204000" />
+      <workItem from="1535582167835" duration="2701000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RepositoriesControllerUnitTest - 2018.08.28 at 14h 19m 30s.xml">
-      <configuration name="RepositoriesControllerUnitTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RepositoriesControllerUnitTest_shouldNotUpdateCommitsWhenValid - 2018.08.28 at 14h 22m 08s.xml">
-      <configuration name="RepositoriesControllerUnitTest.shouldNotUpdateCommitsWhenValid" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RepositoriesControllerUnitTest - 2018.08.28 at 14h 22m 27s.xml">
-      <configuration name="RepositoriesControllerUnitTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GithubAPIWrapperTest_shouldBuildValidRepo - 2018.08.28 at 15h 47m 39s.xml">
-      <configuration name="GithubAPIWrapperTest.shouldBuildValidRepo" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GithubAPIWrapperTest_shouldBuildValidRepo - 2018.08.28 at 15h 48m 25s.xml">
-      <configuration name="GithubAPIWrapperTest.shouldBuildValidRepo" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.28 at 16h 22m 12s.xml">
-      <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.28 at 16h 27m 09s.xml">
-      <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.28 at 16h 28m 32s.xml">
       <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
     </history-entry>
@@ -488,15 +516,36 @@
     <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.28 at 16h 30m 13s.xml">
       <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.29 at 07h 46m 55s.xml">
+      <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.29 at 08h 00m 36s.xml">
+      <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.29 at 08h 00m 39s.xml">
+      <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.29 at 08h 00m 51s.xml">
+      <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.29 at 08h 08m 10s.xml">
+      <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GithubAPIWrapperTest_shouldUpdateRepoWithCommits - 2018.08.29 at 08h 08m 11s.xml">
+      <configuration name="GithubAPIWrapperTest.shouldUpdateRepoWithCommits" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RepositoriesControllerTest - 2018.08.29 at 16h 04m 05s.xml">
+      <configuration name="RepositoriesControllerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25127000" />
+    <option name="totallyTimeSpent" value="30183000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2561366" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20117396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -507,7 +556,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32037815" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -577,16 +626,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java</url>
-          <line>46</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="repo.getId()" language="JAVA" />
@@ -609,16 +648,8 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/unit/app/models/RepoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/unit/app/models/package-info.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/unit/app/models/RepoTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/unit/app/models/package-info.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/unit/controllers/RepositoriesControllerTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/integration/app/controllers/ContributorsControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -645,9 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -658,49 +686,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/unit/ObservableAnswer.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/unit/controllers/RepositoriesControllerUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="760">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2844#2845#0" expanded="true" />
-            <element signature="e#2885#2886#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-437">
-          <caret line="42" column="6" lean-forward="true" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/unit/controllers/ContributorsControllerUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+        <state relative-caret-position="266">
+          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/unit/controllers/RepositoriesControllerUnitTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/Repo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-763">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -711,17 +714,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/helpers/wrappers/GithubWrapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/Repo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        <state relative-caret-position="190">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/unit/app/models/helpers/GithubAPIWrapperTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="157" column="42" selection-start-line="157" selection-start-column="42" selection-end-line="157" selection-end-column="42" />
+        <state relative-caret-position="1211">
+          <caret line="150" selection-start-line="150" selection-end-line="150" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/helpers/wrappers/GithubWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/ContributorsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/CommitsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.0.3.RELEASE/spring-boot-autoconfigure-2.0.3.RELEASE.jar!/org/springframework/boot/autoconfigure/http/HttpMessageConvertersAutoConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.0.3.RELEASE/spring-boot-autoconfigure-2.0.3.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/http/HttpMessageConvertersAutoConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="88" column="42" selection-start-line="88" selection-start-column="42" selection-end-line="88" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1577">
+          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="28" column="51" lean-forward="true" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

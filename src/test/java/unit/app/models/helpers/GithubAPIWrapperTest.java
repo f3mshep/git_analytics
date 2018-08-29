@@ -148,15 +148,7 @@ class GithubAPIWrapperTest {
 
     }
 
-    @Test
-    public void shouldUpdateRepoWithCommits() throws Exception {
-        long id = 1;
-        Commit commitA = commitList.get(0);
-        Commit commitB = commitList.get(1);
-        doReturn(Optional.of(contributor)).when(contributorRepository).findByUsername("f3mshep");
-        doReturn(mockGHRepo).when(github).getRepository("f3mshep/real_fake_doors");
 
-    }
 
     //it should create the ghrepo object upon instantion
 

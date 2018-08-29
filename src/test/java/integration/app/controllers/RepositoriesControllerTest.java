@@ -85,28 +85,7 @@ class RepositoriesControllerTest {
         this.commitRepository.deleteAllInBatch();
         this.repoRepository.deleteAllInBatch();
         this.contributorRepository.deleteAllInBatch();
-        this.wireMockServer = new WireMockServer();
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
-        this.timeStamp = new Date();
-        this.contributor = new Contributor("f3mshep", "Github");
-        this.contributorRepository.save(contributor);
-        this.repo = new RepoBuilder()
-                .setOwner(contributor)
-                .setPlatform("GitHub")
-                .setSummary("A real holler and a hootnanny!")
-                .setTitle("The best Repo Stub ever")
-                .setUrl("http://github.com/totally_real/really")
-                .createRepo();
-        this.repoRepository.save(repo);
-        this.commit = new CommitBuilder()
-                .setUrl("http://github.com/totally_real/really")
-                .setTimestamp(timeStamp)
-                .setStatus("super commit ftw")
-                .setRepo(repo)
-                .setContributor(contributor)
-                .createCommit();
-        this.commitRepository.save(commit);
-
     }
 
 
@@ -131,11 +110,9 @@ class RepositoriesControllerTest {
 
     @Test
     void returnRepo() {
+        Repo testRepo = new RepoBuilder().setOwner(contributor).setPlatform("GitHub").setSummary("Getting my feet wet with Spring Boot REST APIs").setTitle("git_analytics").setUrl("https://github.com/f3mshep/git_analytics").createRepo();
+
     }
 
-    @AfterEach
-    void stopWireMockServer() {
-        this.wireMockServer.stop();
-    }
 
 }
