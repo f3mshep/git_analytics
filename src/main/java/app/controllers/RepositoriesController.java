@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.models.helpers.wrappers.*;
+import app.models.repositories.*;
 import app.exceptions.RepoNotFoundException;
 import app.models.Commit;
 import app.models.Repo;
@@ -9,11 +10,14 @@ import app.models.repositories.CommitRepository;
 import app.models.repositories.ContributorRepository;
 import app.models.repositories.RepoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping(path="/repos")
@@ -40,13 +44,15 @@ public class RepositoriesController {
     }
 
     @GetMapping(path="/{id}/commits")
-    public @ResponseBody Iterable<Commit> getCommits(@PathVariable Long id) throws IOException{
+    public @ResponseBody Iterable<Commit> getCommits(@RequestParam(value = "search", required = false) String search, @PathVariable Long id) throws IOException{
         validateRepo(id);
         Repo myRepo  = repoRepository.findById(id).get();
         //TODO: refactor error handling
         if(shouldRepoUpdate(myRepo)) apiWrapper.updateCommits(myRepo);
-        return commitRepository.findByRepoId(myRepo.getId());
+        Specification<Commit> spec = handleSearchInRepo(search, id);
+        return commitRepository.findAll(spec);
     }
+
 
     @PostMapping
     public @ResponseBody Repo createRepo(@RequestParam String url) throws IOException {
@@ -71,6 +77,19 @@ public class RepositoriesController {
         Instant now = Instant.now();
         Instant lastUpdated = repo.getLastUpdated().toInstant();
         return lastUpdated.isBefore(now.minus(REFRESH_LIMIT_MINUTES, ChronoUnit.MINUTES));
+    }
+
+    private Specification<Commit> handleSearchInRepo(String params, long repoId){
+        String search = new StringBuilder().append(params).append(",repo:").append(repoId).toString();
+        CommitSpecificationBuilder builder = new CommitSpecificationBuilder();
+        Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+        Matcher matcher = pattern.matcher(search + ",");
+        while (matcher.find()) {
+            builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+        }
+
+        Specification<Commit> spec = builder.build();
+        return spec;
     }
 
     public void setWrapper(APIWrapper wrapper){

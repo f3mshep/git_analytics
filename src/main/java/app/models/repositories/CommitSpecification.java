@@ -13,6 +13,10 @@ public class CommitSpecification implements Specification<Commit> {
 
     private SearchCriteria criteria;
 
+    public CommitSpecification(SearchCriteria criteria) {
+        this.criteria = criteria;
+    }
+
     @Override
     public Predicate toPredicate
             (Root<Commit> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
@@ -26,6 +30,14 @@ public class CommitSpecification implements Specification<Commit> {
                     root.<String> get(criteria.getKey()), criteria.getValue().toString());
         }
         else if (criteria.getOperation().equalsIgnoreCase(":")) {
+            if (root.get(criteria.getKey()).getJavaType() == String.class) {
+                return builder.like(
+                        root.<String>get(criteria.getKey()), "%" + criteria.getValue() + "%");
+            } else {
+                return builder.equal(root.get(criteria.getKey()), criteria.getValue());
+            }
+        }
+        else if (criteria.getOperation().equalsIgnoreCase("~")) {
             if (root.get(criteria.getKey()).getJavaType() == String.class) {
                 return builder.like(
                         root.<String>get(criteria.getKey()), "%" + criteria.getValue() + "%");

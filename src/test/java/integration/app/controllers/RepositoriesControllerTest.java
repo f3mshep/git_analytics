@@ -1,5 +1,7 @@
 package integration.app.controllers;
 
+import app.models.repositories.*;
+
 import app.Application;
 import app.models.Commit;
 import app.models.Contributor;
@@ -23,6 +25,7 @@ import org.springframework.mock.http.MockHttpOutputMessage;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
@@ -55,7 +58,6 @@ class RepositoriesControllerTest {
     private Commit commit;
     private Repo repo;
     private Contributor contributor;
-    private List<Commit> commitList = new ArrayList<>();
     private WireMockServer wireMockServer;
     @Autowired
     WebApplicationContext webApplicationContext;
@@ -86,6 +88,40 @@ class RepositoriesControllerTest {
         this.repoRepository.deleteAllInBatch();
         this.contributorRepository.deleteAllInBatch();
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
+        Date timeStamp = new Date();
+        this.contributor = new Contributor("f3mshep", "Github");
+        contributorRepository.save(contributor);
+        this.repo = new RepoBuilder()
+                .setOwner(contributor)
+                .setPlatform("GitHub")
+                .setSummary("A real holler and a hootnanny!")
+                .setTitle("The best Repo Stub ever")
+                .setUrl("http://github.com/totally_real/really")
+                .createRepo();
+        repoRepository.save(repo);
+        repoRepository.save(new RepoBuilder()
+                .setOwner(contributor)
+                .setPlatform("GitBucket")
+                .setSummary("Whoo doggies")
+                .setTitle("The best Repo Stub ever")
+                .setUrl("http://gitbucket.com/totally_real/really")
+                .createRepo());
+        this.commit = new CommitBuilder()
+                .setUrl("http://github.com/totally_real/really")
+                .setTimestamp(timeStamp)
+                .setStatus("super commit ftw")
+                .setRepo(repo)
+                .setContributor(contributor)
+                .createCommit();
+        commitRepository.save(commit);
+        commitRepository.save(new CommitBuilder()
+                .setUrl("http://github.com/totally_real/really")
+                .setTimestamp(new Date())
+                .setStatus("super commit pt 2")
+                .setRepo(repo)
+                .setContributor(contributor)
+                .createCommit()
+        );
     }
 
 
@@ -95,17 +131,29 @@ class RepositoriesControllerTest {
                 o, MediaType.APPLICATION_JSON, mockHttpOutputMessage);
         return mockHttpOutputMessage.getBodyAsString();
     }
-    @Test
-    void getAllRepos() {
+//    @Test
+//    void getAllRepos() {
+//
+//    }
+//
+//    @Test
+//    void getCommits() {
+//    }
+//
+//    @Test
+//    void createRepo() {
+//    }
 
-    }
-
     @Test
-    void getCommits() {
-    }
+    void shouldSearch(){
+        CommitSpecification commitSpecification;
 
-    @Test
-    void createRepo() {
+        SearchCriteria criteria = new SearchCriteria("repo", ":", repo.getId());
+
+        CommitSpecification spec = new CommitSpecification(criteria);
+
+        List<Commit> commits = commitRepository.findAll(spec);
+        System.out.println("wheee");
     }
 
     @Test
