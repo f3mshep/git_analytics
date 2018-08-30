@@ -9,15 +9,20 @@ import app.models.helpers.wrappers.GithubWrapper;
 import app.models.repositories.CommitRepository;
 import app.models.repositories.ContributorRepository;
 import app.models.repositories.RepoRepository;
+import com.google.common.base.Joiner;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.io.IOException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 @RestController
 @RequestMapping(path="/repos")
@@ -81,12 +86,18 @@ public class RepositoriesController {
 
     private Specification<Commit> handleSearchInRepo(String params, long repoId){
         CommitSpecificationBuilder builder = new CommitSpecificationBuilder();
-        Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+        String operationSetExper = Joiner.on("|").join(SearchOperation.SIMPLE_OPERATION_SET);
+        Pattern pattern = Pattern.compile("(\\w+?)(" + operationSetExper + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
         Matcher matcher = pattern.matcher(params + ",");
         while (matcher.find()) {
-            builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+            builder.with(
+                    matcher.group(1),
+                    matcher.group(2),
+                    matcher.group(4),
+                    matcher.group(3),
+                    matcher.group(5));
         }
-        builder.with("repo", ":", repoId);
+        builder.with("repo", ":", repoId, "", "");
         Specification<Commit> spec = builder.build();
         return spec;
     }

@@ -148,7 +148,7 @@ class RepositoriesControllerTest {
     void shouldSearch(){
         CommitSpecification commitSpecification;
 
-        SearchCriteria criteria = new SearchCriteria("repo", ":", repo.getId().toString());
+        SearchCriteria criteria = new SearchCriteria("repo", SearchOperation.EQUALITY, repo.getId().toString());
 
         CommitSpecification spec = new CommitSpecification(criteria);
 

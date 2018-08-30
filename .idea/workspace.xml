@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73305f21-f1f5-4a65-8382-52ee6bc97e47" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/repositories/SearchOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_10_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_19_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gs-mysql-data.iml" beforeDir="false" afterPath="$PROJECT_DIR$/gs-mysql-data.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecificationBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecificationBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/controllers/RepositoriesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/controllers/RepositoriesController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/models/repositories/CommitSpecification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/models/repositories/CommitSpecification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/models/repositories/CommitSpecificationBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/models/repositories/CommitSpecificationBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/models/repositories/SearchCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/models/repositories/SearchCriteria.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/integration/app/controllers/RepositoriesControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/integration/app/controllers/RepositoriesControllerTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,40 +61,40 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="2" />
-          <entry key="java" value="51" />
+          <entry key="java" value="52" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="51" />
+          <entry key="JAVA" value="52" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="11" />
-          <entry key="java" value="7274" />
-          <entry key="xml" value="1" />
+          <entry key="java" value="7786" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7274" />
+          <entry key="JAVA" value="7786" />
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="XML" value="1" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="152" column="54" selection-start-line="152" selection-start-column="54" selection-end-line="152" selection-end-column="54" />
+            <state relative-caret-position="-8">
+              <caret line="132" column="5" selection-start-line="132" selection-start-column="5" selection-end-line="132" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,21 +103,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/SearchOperation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-855">
-              <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+            <state relative-caret-position="437">
+              <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecificationBuilder.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
+            <state relative-caret-position="273">
+              <caret line="99" selection-start-line="99" selection-end-line="99" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecificationBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="22" column="49" lean-forward="true" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#297#298#0" expanded="true" />
+                <element signature="e#329#330#0" expanded="true" />
+                <element signature="e#1354#1377#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,12 +141,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="133">
+              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#464#465#0" expanded="true" />
                 <element signature="e#510#511#0" expanded="true" />
+                <element signature="e#1576#1584#0" expanded="true" />
+                <element signature="e#1740#1748#0" expanded="true" />
+                <element signature="e#1895#1903#0" expanded="true" />
+                <element signature="e#2057#2065#0" expanded="true" />
+                <element signature="e#2187#2195#0" expanded="true" />
+                <element signature="e#2316#2324#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,8 +161,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="71" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+            <state relative-caret-position="285">
+              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -141,8 +170,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+            <state relative-caret-position="266">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -154,6 +183,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -177,12 +207,13 @@
         <option value="$PROJECT_DIR$/src/test/java/unit/ObservableAnswer.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/app/models/helpers/GithubAPIWrapperTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/models/repositories/SearchOperation.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecificationBuilder.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java" />
         <option value="$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecificationBuilder.java" />
       </list>
     </option>
   </component>
@@ -360,7 +391,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535599864956" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535604979081" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -376,7 +407,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RepositoriesControllerTest.shouldSearch">
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="GithubAPIWrapperTest.shouldBuildValidRepo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gs-mysql-data" />
       <extension name="coverage">
@@ -494,14 +525,11 @@
       <workItem from="1535471844110" duration="5808000" />
       <workItem from="1535485907756" duration="13388000" />
       <workItem from="1535553745495" duration="2204000" />
-      <workItem from="1535582167835" duration="16778000" />
+      <workItem from="1535582167835" duration="20745000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RepositoriesControllerTest_shouldSearch - 2018.08.29 at 19h 12m 01s.xml">
-      <configuration name="RepositoriesControllerTest.shouldSearch" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="RepositoriesControllerTest_shouldSearch - 2018.08.29 at 20h 17m 33s.xml">
       <configuration name="RepositoriesControllerTest.shouldSearch" configurationId="JUnit" />
     </history-entry>
@@ -529,9 +557,12 @@
     <history-entry file="RepositoriesControllerTest_shouldSearch - 2018.08.29 at 20h 31m 11s.xml">
       <configuration name="RepositoriesControllerTest.shouldSearch" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="RepositoriesControllerTest_shouldSearch - 2018.08.29 at 21h 09m 06s.xml">
+      <configuration name="RepositoriesControllerTest.shouldSearch" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44260000" />
+    <option name="totallyTimeSpent" value="48227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -621,33 +652,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java</url>
-          <line>90</line>
+          <line>99</line>
           <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java</url>
-          <line>86</line>
-          <properties />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java</url>
-          <line>46</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java</url>
-          <line>48</line>
-          <properties />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java</url>
-          <line>22</line>
-          <properties />
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -658,16 +665,35 @@
         <watch expression="(Long) criteria.getValue()" language="JAVA" />
         <watch expression="Long.parseLong(criteria.getValue())" language="JAVA" />
       </configuration>
-      <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="spec" language="JAVA" />
-        <watch expression="matcher.group(1)" language="JAVA" />
-        <watch expression="matcher.group(2)" language="JAVA" />
-        <watch expression="matcher.group(3)" language="JAVA" />
-      </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>builder.with(&quot;repo&quot;, &quot;:&quot;, repoId, null, null)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>builder.with(&quot;repo&quot;, &quot;:&quot;, repoId, &quot;&quot;, &quot;&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>builder.with(&quot;repo&quot;,)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>matcher.group(4)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>matcher.group(5)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>criteria</expression-string>
         <language-id>JAVA</language-id>
@@ -690,31 +716,6 @@
       </expression>
       <expression>
         <expression-string>criteria.getKey().equals(&quot;repo&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>criteria.getKey()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>root.get(criteria.getKey()).getJavaType()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>root</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>criteria.getKey().getJa</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>matcher.group(3)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -870,55 +871,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/SearchOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="132" column="5" selection-start-line="132" selection-start-column="5" selection-end-line="132" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+        <state relative-caret-position="266">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/SearchCriteria.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="71" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+        <state relative-caret-position="285">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecificationBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
+        <state relative-caret-position="133">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#510#511#0" expanded="true" />
+            <element signature="e#1576#1584#0" expanded="true" />
+            <element signature="e#1740#1748#0" expanded="true" />
+            <element signature="e#1895#1903#0" expanded="true" />
+            <element signature="e#2057#2065#0" expanded="true" />
+            <element signature="e#2187#2195#0" expanded="true" />
+            <element signature="e#2316#2324#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/controllers/RepositoriesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855">
-          <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="273">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#464#465#0" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/integration/app/controllers/RepositoriesControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/models/repositories/CommitSpecificationBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="152" column="54" selection-start-line="152" selection-start-column="54" selection-end-line="152" selection-end-column="54" />
+        <state relative-caret-position="418">
+          <caret line="22" column="49" lean-forward="true" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#297#298#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#1354#1377#0" expanded="true" />
           </folding>
         </state>
       </provider>
