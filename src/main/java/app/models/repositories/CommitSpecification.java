@@ -14,7 +14,19 @@ public class CommitSpecification implements Specification<Commit> {
     private SearchCriteria criteria;
 
     public CommitSpecification(SearchCriteria criteria) {
-        this.criteria = criteria;
+        this.criteria = parseCriteria(criteria);
+    }
+
+    private SearchCriteria  parseCriteria(SearchCriteria criteria){
+        if (criteria.getOperation().equals("timestamp")){
+        } else if (criteria.getKey().equals("repo")){
+            criteria.setValue(Long.valueOf(criteria.getValue().toString()));
+        } else if (criteria.getKey().equals("contributor")){
+            criteria.setValue(Long.valueOf(criteria.getValue().toString()));
+        } else if (criteria.getKey().equals("commit")){
+            criteria.setValue(Long.valueOf(criteria.getValue().toString()));
+        }
+        return criteria;
     }
 
     @Override

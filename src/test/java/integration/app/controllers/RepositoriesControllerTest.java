@@ -148,12 +148,12 @@ class RepositoriesControllerTest {
     void shouldSearch(){
         CommitSpecification commitSpecification;
 
-        SearchCriteria criteria = new SearchCriteria("repo", ":", repo.getId());
+        SearchCriteria criteria = new SearchCriteria("repo", ":", repo.getId().toString());
 
         CommitSpecification spec = new CommitSpecification(criteria);
 
         List<Commit> commits = commitRepository.findAll(spec);
-        System.out.println("wheee");
+        System.out.println(commits);
     }
 
     @Test

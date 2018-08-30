@@ -80,14 +80,13 @@ public class RepositoriesController {
     }
 
     private Specification<Commit> handleSearchInRepo(String params, long repoId){
-        String search = new StringBuilder().append(params).append(",repo:").append(repoId).toString();
         CommitSpecificationBuilder builder = new CommitSpecificationBuilder();
         Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
-        Matcher matcher = pattern.matcher(search + ",");
+        Matcher matcher = pattern.matcher(params + ",");
         while (matcher.find()) {
             builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
         }
-
+        builder.with("repo", ":", repoId);
         Specification<Commit> spec = builder.build();
         return spec;
     }
