@@ -7,6 +7,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class CommitSpecification implements Specification<Commit> {
@@ -19,6 +22,7 @@ public class CommitSpecification implements Specification<Commit> {
 
     private SearchCriteria  parseCriteria(SearchCriteria criteria){
         if (criteria.getOperation().equals("timestamp")){
+            criteria.setValue(convertStringToDate(criteria.getValue().toString()));
         } else if (criteria.getKey().equals("repo")){
             criteria.setValue(Long.valueOf(criteria.getValue().toString()));
         } else if (criteria.getKey().equals("contributor")){
@@ -27,6 +31,18 @@ public class CommitSpecification implements Specification<Commit> {
             criteria.setValue(Long.valueOf(criteria.getValue().toString()));
         }
         return criteria;
+    }
+
+    private Date convertStringToDate(String datetime){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+        try {
+            Date date = formatter.parse(datetime.replaceAll("Z$", "+0000"));
+            return date;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
